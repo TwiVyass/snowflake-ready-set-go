@@ -1,4 +1,4 @@
-### ReadySetGo - Packing for Survival, Simplified
+## ReadySetGo - Packing for Survival, Simplified
 
 ## Inspiration
 In a time where natural disasters seem to be happening more often, it's important to know how to immediately pack for emergencies. With the growing impacts of global warming and man-made disasters—Hurricane Milton (2024), Flooding in various regions of Brazil (2024-25), Earthquake at the Noto Peninsula in Japan (2025), California forest fires (2025). These events remind us how unpredictable life can be. It's imperative to prepare quickly for such emergencies, and one of the best ways to do that is by having a go-bag—a bag packed with essentials so you can leave quickly when disaster strikes. 
