@@ -1,0 +1,21 @@
+# Python specific
+*.pyc
+__pycache__/
+*.pkl
+
+# Environment files
+.env
+.venv/
+env/
+venv/
+Lib/
+Scripts/
+share/
+
+# IDE specific
+.idea/
+.vscode/
+
+# System files
+.DS_Store
+Thumbs.db
