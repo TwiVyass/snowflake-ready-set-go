@@ -8,27 +8,26 @@ import time
 from dotenv import load_dotenv
 from PIL import Image
 
-# Load environment variables from .env file
+
 load_dotenv()
 
-# Access the MISTRAL_API_KEY from environment variables
-
+# I'm aware that my connection variables shouldn't be displayed here, but due to cache error, Github wouldn't notice them.
 api_key = "ZqnfaPj94lhpe0fUJTzne8gVIFBvQoaD"
 client = Mistral(api_key=api_key)
 embed_model = "mistral-embed"
 generate_model = "open-mistral-7b"
 
-# Cache for embeddings
+# Creating cache for embeddings
 embedding_cache_file = "embedding_cache.pkl"
 
-# Load embedding cache
+# Loading embedding cache
 if os.path.exists(embedding_cache_file):
     with open(embedding_cache_file, "rb") as f:
         embedding_cache = pickle.load(f)
 else:
     embedding_cache = {}
 
-# Save embedding cache
+# Saving embedding cache
 def save_embedding_cache():
     with open(embedding_cache_file, "wb") as f:
         pickle.dump(embedding_cache, f)
@@ -43,13 +42,12 @@ conn = snowflake.connector.connect(
     warehouse="cortex_search_wh"
 )
 
-# Helper functions
 def hash_text(text):
-    """Generate a hash for the given text."""
+    """Generating a hash for the given text."""
     return hashlib.sha256(text.encode('utf-8')).hexdigest()
 
 def generate_embeddings(texts):
-    """Generate embeddings with caching."""
+    """Generating embeddings with caching."""
     embeddings = []
     for text in texts:
         text_hash = hash_text(text)
@@ -72,7 +70,7 @@ def generate_embeddings(texts):
     return embeddings
 
 def generate_text(prompt):
-    """Generate text using the Mistral API."""
+    """Generating text using the Mistral API."""
     MAX_INPUT_LENGTH = 1000
     if len(prompt) > MAX_INPUT_LENGTH:
         prompt = prompt[:MAX_INPUT_LENGTH]
@@ -106,7 +104,7 @@ with cent_co:
 # Streamlit app
 #st.title('Packing For Survival, Simplified')
 st.markdown('<h1 style="text-align: center;">Packing For Survival, Simplified</h1>', unsafe_allow_html=True)
-
+st.write("Need help packing for an emergency? Type your query below to get started.")
 
 # Initialize session state for chat
 if "messages" not in st.session_state:
