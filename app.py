@@ -12,7 +12,8 @@ from PIL import Image
 load_dotenv()
 
 # Access the MISTRAL_API_KEY from environment variables
-api_key = os.getenv("MISTRAL_API_KEY")
+
+api_key = "ZqnfaPj94lhpe0fUJTzne8gVIFBvQoaD"
 client = Mistral(api_key=api_key)
 embed_model = "mistral-embed"
 generate_model = "open-mistral-7b"
@@ -34,12 +35,12 @@ def save_embedding_cache():
 
 # Snowflake connection
 conn = snowflake.connector.connect(
-    user=os.getenv("SNOWFLAKE_USER"),
-    password=os.getenv("SNOWFLAKE_PASSWORD"),
-    account=os.getenv("SNOWFLAKE_ACCOUNT"),
-    database=os.getenv("SNOWFLAKE_DATABASE"),
-    schema=os.getenv("SNOWFLAKE_SCHEMA"),
-    warehouse=os.getenv("SNOWFLAKE_WAREHOUSE")
+    user="Tw6sha",
+    password="MerryChristmas6&",
+    account="tmjjhnx-yrb72613",
+    database="CORTEX_SEARCH_DB",
+    schema="SERVICES",
+    warehouse="cortex_search_wh"
 )
 
 # Helper functions
