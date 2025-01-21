@@ -1,0 +1,36 @@
+name: Deploy to Snowflake-ready-set-go
+
+on:
+  push:
+    branches:
+      - main  # Run when pushing to the main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest  # Use the latest version of Ubuntu
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2  # Checks out your code
+
+    - name: Set up Python
+      uses: actions/setup-python@v4  # Sets up Python environment
+      with:
+        python-version: '3.12'  # You can use the Python version you need
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt  # Install your project dependencies
+
+    - name: Set environment variables
+      run: |
+        echo "SNOWFLAKE_ACCOUNT=${{ secrets.SNOWFLAKE_USER }}" >> $GITHUB_ENV
+        echo "SNOWFLAKE_USER=${{ secrets.SNOWFLAKE_ACCOUNT }}" >> $GITHUB_ENV
+        echo "SNOWFLAKE_PASSWORD=${{ secrets.SNOWFLAKE_PASSWORD }}" >> $GITHUB_ENV
+        echo "SNOWFLAKE_WAREHOUSE=${{ secrets.SNOWFLAKE_WAREHOUSE }}" >> $GITHUB_ENV
+        echo "SNOWFLAKE_DATABASE=${{secrets.SNOWFLAKE_DATABASE }}" >> $GITHUB_ENV
+        echo "SNOWFLAKE_SCHEMA=${{secrets.SNOWFLAKE_SCHEMA }}" >> $GITHUB_ENV
+
+    - name: Run the application
+      run: |
+        streamlit run app.py  # Replace with your actual deployment command
