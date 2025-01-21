@@ -104,7 +104,7 @@ with cent_co:
 # Streamlit app
 #st.title('Packing For Survival, Simplified')
 st.markdown('<h1 style="text-align: center;">Packing For Survival, Simplified</h1>', unsafe_allow_html=True)
-st.write("Need help packing for an emergency? Type your query below to get started.")
+st.markdown('<h2 style="text-align: center;">Need help packing for an emergency? Type your query below to get started.</h2>', unsafe_allow_html=True)
 
 # Initialize session state for chat
 if "messages" not in st.session_state:
@@ -138,9 +138,7 @@ if user_input := st.chat_input("What's the emergency?"):
     # Generate response
     #generated_response = generate_text(f"Context: {context}\nQuery: {user_input}\nResponse:")
 
-    # Display assistant's response
     with st.chat_message("assistant"):
         st.markdown(generated_response)
 
-    # Add assistant's message to session state
     st.session_state.messages.append({"role": "assistant", "content": generated_response})
